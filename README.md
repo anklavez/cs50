@@ -1,2 +1,2 @@
 # cs50
-Source code from CS50 course
+Some source code from CS50 course
