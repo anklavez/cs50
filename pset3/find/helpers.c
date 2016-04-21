@@ -11,15 +11,17 @@
 #include <stdio.h>
 #include "helpers.h"
 
+bool binsearch(int values[], int value, int low, int high);
+
 /**
  * Returns true if value is in array of n values, else false.
  */
 bool search(int value, int values[], int n)
 {
-    int low = 1;
+    int low = 0;
     bool result = binsearch(values, value, low, n);
     
-    return false;
+    return result;
 }
 
 /**
@@ -31,14 +33,17 @@ void sort(int values[], int n)
     bool swapped = true;
     int j = 0;
     int temp;
-    while (swapped){
+    while (swapped)
+    {
         j++;
         swapped = false;
-        for (int i = 0; i < n - j; i++){
-            if (values[i] > values[i+1]){
+        for (int i = 0; i < n - j; i++)
+        {
+            if (values[i] > values[i + 1])
+            {
                 temp = values[i];
-                values[i] = values[i+1];
-                values[i+1] = temp;
+                values[i] = values[i + 1];
+                values[i + 1] = temp;
                 swapped = true;
             }
         }
@@ -48,21 +53,26 @@ void sort(int values[], int n)
 /**
  * Binary search implemented as recursive function
  */
-bool binsearch(int values[], int value, int low, int high){
+bool binsearch(int values[], int value, int low, int high)
+{
     
     int mid;
     
-    if (low < high){
+    if (low > high)
+    {
         return false;
     }
     
-    mid = (low + high)/2;
+    mid = (low + high) / 2;
     
-    if (value == values[mid]){
+    if (value == values[mid])
+    {
         return true;
-    }else if(value < values[mid]){
-        binsearch(values,value,low,values[mid]-1)
-    }else{
-        binsearch(values,value,values[mid]+1,high)
+    }else if(value < values[mid])
+    {
+        return binsearch(values,value,low,mid - 1);
+    }else
+    {
+        return binsearch(values,value,mid + 1,high);
     }
 }
