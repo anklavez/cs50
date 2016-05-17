@@ -1,2 +1,2 @@
 # cs50
-Some source code from CS50 course
+Source code of solutions for CS50 problem sets. 
