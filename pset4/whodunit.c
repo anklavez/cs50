@@ -81,14 +81,15 @@ int main(int argc, char* argv[])
             // read RGB triple from infile
             fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
             
-            if(triple.rgbtRed == 0xff)
+            if (triple.rgbtRed == 0xff)
             {
                 triple.rgbtGreen = 0xff;
                 triple.rgbtRed = 0xff;
                 triple.rgbtBlue = 0xff;
-            }else{
-                //apply simple greyscale algorythm
-                int grey = (int)(triple.rgbtBlue+triple.rgbtGreen+triple.rgbtRed)/3;
+            }else
+            {
+                // apply simple greyscale algorythm
+                int grey = (int)(triple.rgbtBlue + triple.rgbtGreen + triple.rgbtRed) / 3;
                 triple.rgbtBlue = grey;
                 triple.rgbtGreen = grey;
                 triple.rgbtRed = grey;
